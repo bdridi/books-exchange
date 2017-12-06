@@ -14,6 +14,8 @@ public class Exchange {
 	private Long id;
 	@OneToOne
 	private ExchangeRequest request;
+	
+	// status  :  Match , Sent, Recieved 
 	private String statusA;
 	private String statusB;
 	
@@ -62,6 +64,17 @@ public class Exchange {
 		this.request = request;
 		this.statusA = statusA;
 		this.statusB = statusB;
+	}
+	
+	/**
+	 * @param request
+	 * @param statusA
+	 * @param statusB
+	 */
+	public Exchange(ExchangeRequest request) {
+		this.request = request;
+		this.statusA = "Match";
+		this.statusB = "Match";
 	}
 	
 	

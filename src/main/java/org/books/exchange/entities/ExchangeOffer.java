@@ -18,11 +18,11 @@ public class ExchangeOffer {
 	@OneToOne
 	private Book book;
 	private String preference;
+	private boolean isShowed = true;
 	
 	
 	public ExchangeOffer() {
-		
-		
+				
 	}
 
 
@@ -32,11 +32,22 @@ public class ExchangeOffer {
 	 * @param book
 	 * @param preference
 	 */
-	public ExchangeOffer(Long id, User user, Book book, String preference) {
-		this.id = id;
+	public ExchangeOffer(User user, Book book, String preference) {
+		
 		this.user = user;
 		this.book = book;
-		this.preference = preference;
+		this.preference = preference; 
+		
+	}
+
+
+	public boolean getStatus() {
+		return isShowed;
+	}
+
+
+	public void setStatus(boolean isShowed) {
+		this.isShowed = isShowed;
 	}
 
 

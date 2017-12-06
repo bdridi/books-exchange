@@ -27,12 +27,12 @@ public class ExchangeRequest {
 	 * @param exB
 	 * @param message
 	 */
-	public ExchangeRequest(ExchangeOffer exA, ExchangeOffer exB, String message, int status) {
+	public ExchangeRequest(ExchangeOffer exA, ExchangeOffer exB, String message) {
 		
 		this.exA = exA;
 		this.exB = exB;
 		this.message = message;
-		this.status = status;
+		this.status = 0;
 	}
 
 	public Long getId() {

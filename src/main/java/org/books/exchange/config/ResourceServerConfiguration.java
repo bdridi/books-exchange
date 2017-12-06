@@ -1,43 +1,28 @@
-//package org.books.exchange.config;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-//import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
-//import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
-//import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
-//import org.springframework.security.oauth2.provider.token.TokenStore;
-//import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
-// 
-//@Configuration
-//@EnableResourceServer
-//public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
-// 
-//    private static final String RESOURCE_ID = "books_exchange";
-//     
-//    @Autowired
-//    private TokenStore tokenStore;
-//    @Bean
-//    public TokenStore tokenStore() {
-//        return new InMemoryTokenStore();
-//    }
-//
-//    
-//    @Override
-//    public void configure(ResourceServerSecurityConfigurer resources) {
-//        resources.tokenStore(tokenStore).resourceId(RESOURCE_ID);
-//    }
-// 
-//    @Override
-//    public void configure(HttpSecurity http) throws Exception {
-////        http.
-////        anonymous().disable()
-////        .requestMatchers().antMatchers("/api/**")
-////        .and().authorizeRequests()
-////        .antMatchers("/api/**").access(RESOURCE_ID)
-////        .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
-//    }
-// 
-//}
+package org.books.exchange.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+
+@Configuration
+@EnableResourceServer
+public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+	
+
+	@Override
+	public void configure(HttpSecurity http) throws Exception {
+			
+	  
+		  http.authorizeRequests().antMatchers("/api/books").permitAll();	
+		  http.authorizeRequests().antMatchers("/api/plainOffers").permitAll();	
+		  http.authorizeRequests().antMatchers("/api/offers").permitAll();	
+		  http.authorizeRequests().antMatchers("/api/public/*").permitAll();	
+		  //http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
+	}
+
+	
+	
+}

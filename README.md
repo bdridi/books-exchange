@@ -2,11 +2,11 @@
 ## Spring Boot application for training purpose 
 
 ### prerequisites
+
 * Java 1.8
 * Docker installed
 * Maven 3.x
 
- 
 ### Installation :
 
 1- Clone project : 

@@ -8,12 +8,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
+@Table(name = "book")
 public class Book implements Serializable{
 	@Id
 	@GeneratedValue
@@ -23,9 +27,9 @@ public class Book implements Serializable{
 	@NotEmpty
 	private String title; 
 	private int pages;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	 @Temporal(TemporalType.DATE)
 	private Date publishDate;
-	private String ISBN;
+	private String description;
 	private String publisher;
 	
 	
@@ -37,24 +41,21 @@ public class Book implements Serializable{
 		super();
 	}
 	
-	
-	
-
 
 	/**
 	 * @param author
 	 * @param title
 	 * @param pages
 	 * @param publishDate
-	 * @param iSBN
+	 * @param description
 	 * @param publisher
 	 */
-	public Book(String author, String title, int pages, Date publishDate, String iSBN, String publisher) {
+	public Book(String author, String title, int pages, Date publishDate, String description, String publisher) {
 		this.author = author;
 		this.title = title;
 		this.pages = pages;
 		this.publishDate = publishDate;
-		ISBN = iSBN;
+		description = description;
 		this.publisher = publisher;
 	}
 
@@ -147,21 +148,20 @@ public class Book implements Serializable{
 	}
 
 
-
 	/**
-	 * @return the iSBN
+	 * @return the description
 	 */
-	public String getISBN() {
-		return ISBN;
+	public String getdescription() {
+		return description;
 	}
 
 
 
 	/**
-	 * @param iSBN the iSBN to set
+	 * @param description the description to set
 	 */
-	public void setISBN(String iSBN) {
-		ISBN = iSBN;
+	public void setdescription(String description) {
+		this.description = description;
 	}
 
 

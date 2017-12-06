@@ -19,7 +19,7 @@ public class User implements UserDetails{
 
 	@Id 
 	@GeneratedValue
-	private Long   id;
+	public Long   id;
 	private String username;
 	private String name;
 	private String email;
@@ -27,7 +27,8 @@ public class User implements UserDetails{
 	private String password;
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Role> roles;
-	private boolean enabled;
+	
+	private boolean enabled = true;
 
 		
 	public void setEnabled(boolean enabled) {
